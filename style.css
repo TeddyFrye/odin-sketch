@@ -1,12 +1,10 @@
 .row {
     display: flex;
-    height: 30px;
-    width: fit-content;
   }
   
   .grid-square {
-    display: flex;
-    width: 30px;
+    flex-grow: 1;
+    height: 30px;
     border: 1px solid black;
   }
 
@@ -16,6 +14,12 @@
     border-bottom: 100px solid transparent;
     border-image: url(/etchasketch1.jpg) 30 round;
     border-image-slice: 15% 15% 25% 15%;
+  }
+
+@media screen and (max-width: 480px) {
+    .grid-square {
+      height:10px;
+    }
   }
 
   
