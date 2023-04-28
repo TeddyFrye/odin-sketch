@@ -9,7 +9,7 @@ body{
   
 .grid-square {
     flex-grow: 1;
-    height: 50px;
+    height: 40px;
     width: 1px;
     background-color: hsl(40 ,56%,76%);
       
