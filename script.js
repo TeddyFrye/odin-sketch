@@ -18,13 +18,15 @@ for (let i = 0; i < numRow; i++){
 }
 function darkenSquare(e) {
     const darkness = parseInt(e.target.dataset.darkness) + 30;
-    e.target.style.backgroundColor = `hsl( 0, 0%, ${100 - darkness}%)`;
+    e.target.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, ${100 - darkness}%)`;
     e.target.dataset.darkness = darkness;
-  }
+}
+
 const squares = document.querySelectorAll('.grid-square');
 squares.forEach(square => {
     square.addEventListener('mouseover', darkenSquare);
 });
+
 //ReSizing the Grid
 function reSize (){
     let wantSize = parseInt(prompt("How many squares per side would you like?"));
