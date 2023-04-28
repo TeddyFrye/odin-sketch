@@ -2,10 +2,10 @@ const container = document.querySelector('#container');
 
 const border = document.createElement('div');
 container.appendChild(border);
-for (let i = 0; i < 16; i++){
+for (let i = 0; i <32; i++){
     const row = document.createElement('div');
     row.classList.add('row');
-    for (let j = 0; j < 16; j++){
+    for (let j = 0; j < 32; j++){
         const gridSquare = document.createElement('div');
         gridSquare.classList.add('grid-square');
         gridSquare.dataset.darkness = 0;
@@ -15,7 +15,7 @@ for (let i = 0; i < 16; i++){
 }
 function darkenSquare(e) {
     const darkness = parseInt(e.target.dataset.darkness) + 30;
-    e.target.style.backgroundColor = `hsl(0, 0%, ${100 - darkness}%)`;
+    e.target.style.backgroundColor = `hsl( 0, 0%, ${100 - darkness}%)`;
     e.target.dataset.darkness = darkness;
   }
 const squares = document.querySelectorAll('.grid-square');
@@ -28,12 +28,12 @@ squares.forEach(square => {
 function clearGrid(){
     const squares = document.querySelectorAll('.grid-square');
     squares.forEach(square => {
-      square.style.backgroundColor = `hsl(0,0%,${100}%)`;
+      square.style.backgroundColor = `hsl(40, 56%, 76%)`;
       square.dataset.darkness = 0;
     });
-    const container = document.querySelector('#container');
     shake(container);
   }
+  
   
   const clearBtn = document.createElement('button');
   clearBtn.textContent = 'Clear Grid';
