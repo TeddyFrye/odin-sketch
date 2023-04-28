@@ -4,16 +4,14 @@
   
 .grid-square {
     flex-grow: 1;
-    height: 12px;
-    width: 15px;
+    height: 50px;
+    width: 1px;
     background-color: hsl(40 ,56%,76%);
       
   }
 
 #container {
     margin: 30px;
-    width: 500px;
-    height: 383px;
     border: 20px solid transparent;
     border-bottom: 100px solid transparent;
     border-image: url(https://m.media-amazon.com/images/I/71Rw9Nr1czL._AC_UF894,1000_QL80_.jpg) 30 round;

@@ -1,11 +1,14 @@
 const container = document.querySelector('#container');
 
 const border = document.createElement('div');
+
+numRow = 16
+numColumn = numRow
 container.appendChild(border);
-for (let i = 0; i <32; i++){
+for (let i = 0; i < numRow; i++){
     const row = document.createElement('div');
     row.classList.add('row');
-    for (let j = 0; j < 32; j++){
+    for (let j = 0; j < numColumn; j++){
         const gridSquare = document.createElement('div');
         gridSquare.classList.add('grid-square');
         gridSquare.dataset.darkness = 0;
@@ -22,8 +25,34 @@ const squares = document.querySelectorAll('.grid-square');
 squares.forEach(square => {
     square.addEventListener('mouseover', darkenSquare);
 });
+//ReSizing the Grid
+function reSize (){
+    let wantSize = parseInt(prompt("How many squares per side would you like?"));
+    clearGrid();
+    numRow = wantSize;
+    numColumn = wantSize;
+    container.innerHTML = '';
+    for (let i = 0; i < numRow; i++){
+        const row = document.createElement('div');
+        row.classList.add('row');
+        for (let j = 0; j < numColumn; j++){
+            const gridSquare = document.createElement('div');
+            gridSquare.classList.add('grid-square');
+            gridSquare.dataset.darkness = 0;
+            row.appendChild(gridSquare);
+        }
+        container.appendChild(row);
+    }
+    const squares = document.querySelectorAll('.grid-square');
+    squares.forEach(square => {
+      square.addEventListener('mouseover', darkenSquare);
+    });
+  }
+const sizeBtn = document.createElement('button');
+sizeBtn.textContent = 'How many squares would you like?';
+sizeBtn.addEventListener('click', reSize);
 
-
+document.body.appendChild(sizeBtn);
 //Clearing the Tablet with a Button
 function clearGrid(){
     const squares = document.querySelectorAll('.grid-square');
