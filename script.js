@@ -31,13 +31,74 @@ function clearGrid(){
       square.style.backgroundColor = `hsl(0,0%,${100}%)`;
       square.dataset.darkness = 0;
     });
-
+    const container = document.querySelector('#container');
+    shake(container);
   }
   
   const clearBtn = document.createElement('button');
   clearBtn.textContent = 'Clear Grid';
   clearBtn.addEventListener('click',clearGrid);
-  
   document.body.appendChild(clearBtn);
   
 //Shaking animation
+const shakeElements = [];
+
+function shake(container, magnitude = 16, angular = false) {
+  var tiltAngle = 1;
+  var counter = 1;
+  var numberOfShakes = 15;
+  var startX = 0, startY = 0, startAngle = 0;
+  var magnitudeUnit = magnitude / numberOfShakes;
+
+  function randomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  if (shakeElements.indexOf(container) === -1) {
+    shakeElements.push(container);
+
+    container.updateShake = function() {
+      if (angular) {
+        angularShake();
+      } else {
+        upAndDownShake();
+      }
+    };
+  }
+
+  function upAndDownShake() {
+    if (counter < numberOfShakes) {
+      container.style.transform = `translate(${startX}px, ${startY}px)`;
+      magnitude -= magnitudeUnit;
+      var randomX = randomInt(-magnitude, magnitude);
+      var randomY = randomInt(-magnitude, magnitude);
+      container.style.transform = `translate(${randomX}px, ${randomY}px)`;
+      counter += 1;
+      requestAnimationFrame(upAndDownShake);
+    }
+
+    if (counter >= numberOfShakes) {
+      container.style.transform = `translate(${startX}px, ${startY}px)`;
+      shakeElements.splice(shakeElements.indexOf(container), 1);
+    }
+  }
+
+  function angularShake() {
+    if (counter < numberOfShakes) {
+      container.style.transform = `rotate(${startAngle}deg)`;
+      magnitude -= magnitudeUnit;
+      var angle = Number(magnitude * tiltAngle).toFixed(2);
+      container.style.transform = `rotate(${angle}deg)`;
+      counter += 1;
+      tiltAngle *= -1;
+      requestAnimationFrame(angularShake);
+    }
+
+    if (counter >= numberOfShakes) {
+      container.style.transform = `rotate(${startAngle}deg)`;
+      shakeElements.splice(shakeElements.indexOf(container), 1);
+    }
+  }
+
+  container.updateShake();
+}
