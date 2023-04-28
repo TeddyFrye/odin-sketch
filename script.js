@@ -22,8 +22,38 @@ const squares = document.querySelectorAll('.grid-square');
 squares.forEach(square => {
     square.addEventListener('mouseover', darkenSquare);
 });
-/*
-rockBtn.addEventListener('mouseover', function() {
-    rockBtn.style.backgroundColor = 'lightgray';
-});
-*/
+
+
+//Clearing the Tablet with a Button
+function clearGrid(){
+  const squares = document.querySelectorAll('.grid-square');
+  squares.forEach(square => {
+    square.style.backgroundColor = `hsl(0,0%,${100}%)`;
+    square.dataset.darkness = 0;
+})
+}
+
+const clearBtn = document.createElement('button');
+clearBtn.textContent = 'Clear Grid';
+clearBtn.addEventListener('click',clearGrid);
+
+const buttonContainer = document.querySelector('#button-container');
+container.appendChild(clearBtn);
+
+/*Chat's code:
+function clearGrid() {
+    const squares = document.querySelectorAll('.grid-square');
+    squares.forEach(square => {
+      square.style.backgroundColor = 'hsl(0, 0%, 100%)';
+      square.dataset.darkness = 0;
+    });
+  }
+  
+  // Adding a Clear Button
+  const clearBtn = document.createElement('button');
+  clearBtn.textContent = 'Clear Grid';
+  clearBtn.addEventListener('click', clearGrid);
+  
+  const buttContainer = document.querySelector('#button-container');
+  buttContainer.appendChild(clearBtn);
+  */
