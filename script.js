@@ -52,7 +52,9 @@ const sizeBtn = document.createElement('button');
 sizeBtn.textContent = 'How many squares would you like?';
 sizeBtn.addEventListener('click', reSize);
 
-document.body.appendChild(sizeBtn);
+document.body.insertBefore(sizeBtn, document.body.firstChild);
+
+
 //Clearing the Tablet with a Button
 function clearGrid(){
     const squares = document.querySelectorAll('.grid-square');
@@ -67,7 +69,9 @@ function clearGrid(){
   const clearBtn = document.createElement('button');
   clearBtn.textContent = 'Clear Grid';
   clearBtn.addEventListener('click',clearGrid);
-  document.body.appendChild(clearBtn);
+  
+document.body.insertBefore(clearBtn, document.body.firstChild);
+
   
 //Shaking animation
 const shakeElements = [];
